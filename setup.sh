@@ -25,7 +25,7 @@ mysql -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost'; FLUSH PR
 
 # 4. Configure NGINX
 
-cat > /etc/nginx/sites-available/$DOMAIN <<EOF
+cat > /etc/nginx/sites-available/default <<EOF
 
 server{
 
@@ -49,9 +49,7 @@ server{
 }
 EOF
 
-ls -sf /etc/nginx/sites-available/$DOMAIN /etc/nginx/sites-enabled/
-rm -f /etc/nginx/sites-enabled/default
-systemctl restart nginx
+nginx -t && systemctl reload nginx
 
 # 5. Composer and Laravel Setup
 
