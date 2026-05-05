@@ -6,7 +6,8 @@ DB_NAME="db"
 DB_USER="db"
 DB_PASS="king11BRYAN!2025"
 DOMAIN="bryandacera.dev"
-PROJECT_DIR=$(pwd)
+SERVER_PROJECT_DIR="/var/www/bryan/public"
+PROJECT_DIR="/var/www/bryan/public"
 
 
 # 2. Install Stack (PHP 8.3, MySQL, Nginx)
@@ -14,12 +15,12 @@ PROJECT_DIR=$(pwd)
 export DEBIAN_FRONTEND=noninteractive
 apt update && apt upgrade -y
 apt install -y php8.3-fpm php8.3-mysql php8.3-{mbstring,xml,bcmath,curl,zip,intl,gd}
-apt install mysql-server nginx unzip python3-certbot-nginx
+apt install -y mysql-server nginx unzip python3-certbot-nginx
 
 # 3. Configure MySQL
 
 mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
-mysql -e "CREATE USER IF NOT EXIST '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
+mysql -e "CREATE USER IF NOT EXISTS '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
 mysql -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost'; FLUSH PRIVILEGES;"
 
 # 4. Configure NGINX
@@ -28,13 +29,22 @@ cat > /etc/nginx/sites-available/$DOMAIN <<EOF
 
 server{
 
-    listen 80;
-    server_name $DOMAIN www.$DOMAIN;
-    root $PROJECT_DIR/public;
+    listen 80 default_server;
+    root $SERVER_PROJECT_DIR;
     charset utf-8;
-    index index.php;
-    location / { try_file \$uri \$uri/ /index.php?\$query_string; }
-    location ~ \.php$ { include snippets /fastcgi-php.conf; fastcgi_pass unix:/run/php/php8.3-fpm.sock; }
+    server_name $DOMAIN www.$DOMAIN;
+    index index.html index.php;
+
+    location / { try_files $uri $uri/ /index.php$query_string }
+
+    location ~ \.php$  {
+    include snippets/fastcgi-php.conf;
+    fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+    }
+
+    location ~ /\.(?!well-known).* {
+    deny all;
+    }
 
 }
 EOF
