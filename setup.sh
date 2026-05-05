@@ -5,7 +5,7 @@
 DB_NAME="db"
 DB_USER="db"
 DB_PASS="king11BRYAN!2025"
-DOMAIN="bryandacera.dev"
+DOMAIN="mlgcl.tech"
 SERVER_PROJECT_DIR="/var/www/bryan/public"
 PROJECT_DIR="/var/www/bryan"
 
