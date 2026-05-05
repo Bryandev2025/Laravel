@@ -7,7 +7,7 @@ DB_USER="db"
 DB_PASS="king11BRYAN!2025"
 DOMAIN="bryandacera.dev"
 SERVER_PROJECT_DIR="/var/www/bryan/public"
-PROJECT_DIR="/var/www/bryan/public"
+PROJECT_DIR="/var/www/bryan"
 
 
 # 2. Install Stack (PHP 8.3, MySQL, Nginx)
