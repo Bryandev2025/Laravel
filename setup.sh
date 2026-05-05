@@ -19,7 +19,7 @@ apt install mysql-server nginx unzip python3-certbot-nginx
 # 3. Configure MySQL
 
 mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
-mysql -e "CREATE USER IF NOT EXIST '$DB_SER'@'localhost' IDENTIFIED BY '$DB_PASS';"
+mysql -e "CREATE USER IF NOT EXIST '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';"
 mysql -e "GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost'; FLUSH PRIVILEGES;"
 
 # 4. Configure NGINX
@@ -67,5 +67,7 @@ chown -R $USER:$USER $PROJECT_DIR
 chown -R $USER:www-data $PROJECT_DIR/storage $PROJECT_DIR/bootstrap/cache
 chmod -R 775 $PROJECT_DIR/storage $PROJECT_DIR/bootstrap/cache
 
+echo "Starting SSL Configuration..."
+sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN
 
 echo "Setup Finished!"
