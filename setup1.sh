@@ -85,6 +85,7 @@ chown -R $USER:$USER $PERMISSION_DIR
 chown -R $USER:www-data $PERMISSION_DIR/storage $PERMISSION_DIR/bootstrap/cache
 chmod -R 775 $PERMISSION_DIR/storage $PERMISSION_DIR/bootstrap/cache
 
+# 7. Deploy with SSL
 echo "Configuring SSL Certificate.........."
 certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN
 
