@@ -14,4 +14,3 @@ jobs:
           script: |
             cd /var/www/bryan
             git pull origin production
-            php artisan optimize
