@@ -8,8 +8,6 @@ DB_PASS="king11BRYAN!2025"
 
 DOMAIN="mlgcl.tech"
 
-PROJECT_APP_URL="https://mlgcl.tech"
-
 SERVER_PROJECT_DIR="/var/www/bryan/public"
 PROJECT_DIR="/var/www/bryan"
 
@@ -65,8 +63,6 @@ cp .env.example .env
 
 
 # 5.1. Configure Laravel  .env (Uncommit and Change)
-
-
 
 sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=mysql/' .env
 sed -i "s/# DB_HOST=127.0.0.1/DB_HOST=127.0.0.1/" .env
