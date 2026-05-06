@@ -77,7 +77,7 @@ sed -i "s|APP_URL=http://localhost|APP_URL=$PROJECT_APP_URL|" .env
 sed -i 's/DB_CONNECTION=sqlite/DB_CONNECTION=mysql/' .env
 sed -i "s/# DB_HOST=127.0.0.1/DB_HOST=127.0.0.1/" .env
 sed -i "s/# DB_PORT=3306/DB_PORT=3306/" .env
-sed -1 "s/# DB_DATABASE=laravel/DB_DATABASE=$DB_NAME/" .env
+sed -i "s/# DB_DATABASE=laravel/DB_DATABASE=$DB_NAME/" .env
 sed -i "s/# DB_USERNAME=root/DB_USERNAME=$DB_USER/" .env
 sed -i "s/# DB_PASSWORD=/DB_PASSWORD=$DB_PASS/" .env
 
