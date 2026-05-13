@@ -9,7 +9,7 @@ DB_PASS="king11BRYAN!2025"
 
 PROJECT_URL="https://bryandacera.dev"
 
-DOMAIN="mlgcl.tech"
+DOMAIN="bryandera.dev"
 
 SERVER_PROJECT_DIR="/var/www/Laravel/public"
 PERMISSION_DIR="/var/www/Laravel"
