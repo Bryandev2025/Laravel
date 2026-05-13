@@ -7,12 +7,12 @@ DB_NAME="db"
 DB_USER="db"
 DB_PASS="king11BRYAN!2025"
 
-PROJECT_URL="https://mlgcl.tech"
+PROJECT_URL="https://bryandacera.dev"
 
 DOMAIN="mlgcl.tech"
 
-SERVER_PROJECT_DIR="/var/www/bryan/public"
-PERMISSION_DIR="/var/www/bryan"
+SERVER_PROJECT_DIR="/var/www/Laravel/public"
+PERMISSION_DIR="/var/www/Laravel"
 
 # 2. Setup Stacks
 
